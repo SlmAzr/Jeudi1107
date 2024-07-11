@@ -6,15 +6,11 @@ let infoSearch = "";
 
 inputSearch.addEventListener("keyup", (e) => {
   infoSearch = e.target.value.toLowerCase();
-  displayingSearchPlanets();
+  displayingSearch();
 });
 
-const getPlanets = async () => {
-  const response = await fetch("https://swapi.dev/api/planets");
-  const data = await response.json();
-  return data.results;
-};
-let bara = getPlanets();
+
+const dataFetched = getPlanets();
 
 const displayInfo = (element) => {
   if (element) {
@@ -30,7 +26,7 @@ const displayInfo = (element) => {
 };
 
 select.addEventListener("change", () => {
-  displayingSearchPlanets();
+  displayingSearch();
 });
 
 const sortData = (planets) => {

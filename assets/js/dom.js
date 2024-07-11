@@ -1,7 +1,6 @@
 
-const displayingSearchPlanets = async () => {
-    const data = await bara;
-    console.log(data);
+const displayingSearch = async () => {
+    const data = await dataFetched;
     let filteredData = filterData(data);
     let sortedData = sortData(filteredData);
     count.textContent = sortedData.length;
@@ -11,7 +10,7 @@ const displayingSearchPlanets = async () => {
   
     sortedData.map((element) => {
       const row = document.createElement("tr");
-      const headerPlus =  element.terrain || element.vehicle_class ;
+      const headerPlus =  element.terrain || element.vehicle_class || element.gender; ;
   
       const headerName = document.createElement("th");
       headerName.innerHTML = element.name;
@@ -30,5 +29,5 @@ const displayingSearchPlanets = async () => {
     });
   };
   
-  displayingSearchPlanets();
+  displayingSearch();
   

@@ -6,11 +6,18 @@ let infoSearch = "";
 
 inputSearch.addEventListener("keyup", (e) => {
   infoSearch = e.target.value.toLowerCase();
-  displayingSearch();
+  displayingSearch()
 });
 
-const dataFetched = getVehicles();
+const getPeople = async () => {
+  const response = await fetch("https://swapi.dev/api/people");
+  const data = await response.json();
+  console.log(data);
+  return data.results;
+};
 
+
+const dataFetched = getPeople();  
 
 const displayInfo = (element) => {
   if (element) {
@@ -26,24 +33,17 @@ const displayInfo = (element) => {
 };
 
 select.addEventListener("change", () => {
-  displayingSearch();
+    displayingSearch();
 });
 
-const sortData = (planets) => {
+const sortData = (kin) => {
   switch (select.value) {
-    case "price":
-      return planets.sort((a, b) => parseInt(a.cost_in_credits) - parseInt(b.cost_in_credits));
-    case "zeroToHk":
-      return planets.filter((planet) => parseInt(planet.population) < 15000);
-    case "hkToHundredM":
-      return planets.filter((planet) => {
-        const population = parseInt(planet.population);
-        return population >= 15000 && population < 20000;
-      }); 
-    case "moreHundredM":
-      return planets.filter((planet) => parseInt(planet.population) > 20000);
+    case "female":
+      return kin.filter((planet) => planet.gender === "female");
+    case "male":
+      return kin.filter((planet) => planet.gender === "male");
     default:
-      return planets;
+      return kin;
   }
 };
 
