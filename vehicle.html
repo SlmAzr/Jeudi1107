@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/planets.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./assets//img/logotype (1).png" alt="" />
+            </div>
+            <ul>
+                <li>
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li>
+                    <a href="">Prochaine mission</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="sideBar">
+            <div class="side-option">
+                <div>
+                    <a href="planets.html"><i class="fa-solid fa-globe"></i></a>
+                    <p>planète</p>
+                </div>
+                <div>
+                    <a href="vehicle.html"> <i class="fa-solid fa-rocket"></i></a>
+
+                    <p>véhicule</p>
+                </div>
+                <div>
+                    <a href="personnes.html"> <i class="fa-brands fa-reddit-alien"></i></a>
+
+                    <p>personnes</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="container-global">
+            <div class="global-container">
+                <div class="global-slection">
+                    <h2>vehicule</h2>
+                    <div class="filter">
+                        <!-- Par Population <i class="fa-solid fa-sort-down"></i> -->
+                    <select name="" id="selector">
+                        <option value="">veuillez sélectionner</option>
+                        <option value="population">Par Population</option>
+                        <option value="zeroToHk">0 à 100 000</option>
+                        <option value="hkToHundredM">100.000 à 100.000.000</option>
+                        <option value="moreHundredM">+100.000.000</option>
+                    </select>
+                    </div>
+                    <div class="search-bar">
+                        <input id="input-search" class="search" placeholder="Faites votre recherche" type="text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="wrapp">
+                        <div class="global-list">
+                            <div>
+                                <table id="table">
+                                    <tr>
+                                        <th class="name">NOM</th>
+                                        <th class="terrain">TERRAIN</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="count-wrapper">
+                            <p class="count"></p>
+                            <p >resultat(s)</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="global-display">
+                <div class="global-info">
+                    <h2 id="global-name"></h2>
+                    <div class="toLine">
+                        <p>passagers: </p><p id="population"></p>
+                    </div>
+                    <div class="stats global-stats">
+                        <div class="stat">
+                            <i class="fa-regular fa-circle"></i>
+                            <div>
+                              <p>Taille</p>
+                              <p id="length"></p>
+                            </div>
+                          </div>
+                          <div class="stat">
+                            <i class="fa-solid fa-temperature-full"></i>
+                            <div>
+                              <p>Equipage</p>
+                              <p id="crew"></p>
+                            </div>
+                          </div>
+                          <div class="stat">
+                            <i class="fa-solid fa-magnet"></i>
+                            <div>
+                              <p>Vitesse atmosphérique</p>
+                              <p id="speed"></p>
+                            </div>
+                          </div>
+                          <div class="stat">
+                            <i class="fa-solid fa-tree"></i>
+                            <div>
+                              <p>Fioul</p>
+                              <p id="consumables"></p>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <p class="no-global">Sélectionner le contenu à afficher !</p>
+            </div>
+        </div>
+
+        </div>
+    </main>
+</body>
+    <!-- <script src="script.js"></script> -->
+    <script src="./assets/js/vehicule.js"></script>
+    <script src="./assets/js/dom.js"></script>
+
+</html>
