@@ -140,15 +140,14 @@ main {
   justify-content: center;
 }
 
-
 .table-container {
-  width: 100%; /* ou une largeur spécifique */
-  max-height: 300px; /* hauteur maximale avant défilement */
-  overflow-y: auto; /* défilement vertical */
-  overflow-x: auto; /* défilement horizontal, si nécessaire */
+  width: 100%; 
+  max-height: 300px; 
+  overflow-y: auto; 
+  overflow-x: auto; 
 }
 table {
-  width: 100%; /* optionnel, pour prendre toute la largeur du conteneur */
+  width: 100%;
   border-collapse: collapse;
 }
 .table-container::-webkit-scrollbar {

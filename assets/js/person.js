@@ -1,29 +1,28 @@
 const inputSearch = document.getElementById("input-search");
 const select = document.getElementById("selector");
 const count = document.querySelector(".count");
-
 let infoSearch = "";
 
+document.addEventListener("DOMContentLoaded", () => {
+  inputSearch.addEventListener("keyup", (e) => {
+    infoSearch = e.target.value.toLowerCase();
+    displayingSearch();
+  });
+
+  select.addEventListener("change", displayingSearch);
+});
+
 const getPeople = async () => {
- 
   let url = apiUrl + "people/";
-  let hehe = []
+  let hehe = [];
   while (url) {
     const data = await fetchData(url);
     hehe.push(...data.results);
     url = data.next;
   }
-   return hehe
-}
-const dataFetched = getPeople();  
-
-
-inputSearch.addEventListener("keyup", (e) => {
-  infoSearch = e.target.value.toLowerCase();
-  displayingSearch()
-});
-
-
+  return hehe;
+};
+const dataFetched = getPeople();
 
 const displayInfo = (element) => {
   if (element) {
@@ -38,10 +37,6 @@ const displayInfo = (element) => {
   }
 };
 
-select.addEventListener("change", () => {
-    displayingSearch();
-});
-
 const sortData = (kin) => {
   switch (select.value) {
     case "female":
@@ -53,9 +48,8 @@ const sortData = (kin) => {
   }
 };
 
-
 const filterData = (planets) => {
-  return planets.filter((planet) => planet.name.toLowerCase().includes(infoSearch));
+  return planets.filter((planet) =>
+    planet.name.toLowerCase().includes(infoSearch)
+  );
 };
-
-

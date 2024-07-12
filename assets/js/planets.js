@@ -1,30 +1,27 @@
 const inputSearch = document.getElementById("input-search");
 const select = document.getElementById("selector");
 const count = document.querySelector(".count");
-
 let infoSearch = "";
 
+document.addEventListener("DOMContentLoaded", () => {
+  inputSearch.addEventListener("keyup", (e) => {
+    infoSearch = e.target.value.toLowerCase();
+    displayingSearch();
+  });
+  select.addEventListener("change", displayingSearch);
+});
 
 const getPlanets = async () => {
   let url = apiUrl + "planets/";
-  let results = []
+  let results = [];
   while (url) {
     const data = await fetchData(url);
     results.push(...data.results);
     url = data.next;
   }
-   return results
-}
-const dataFetched = getPlanets();  
-
-
-
-inputSearch.addEventListener("keyup", (e) => {
-  infoSearch = e.target.value.toLowerCase();
-  displayingSearch();
-});
-
-
+  return results;
+};
+const dataFetched = getPlanets();
 
 const displayInfo = (element) => {
   if (element) {
@@ -39,14 +36,12 @@ const displayInfo = (element) => {
   }
 };
 
-select.addEventListener("change", () => {
-  displayingSearch();
-});
-
 const sortData = (planets) => {
   switch (select.value) {
     case "population":
-      return planets.sort((a, b) => parseInt(b.population) - parseInt(a.population));
+      return planets.sort(
+        (a, b) => parseInt(b.population) - parseInt(a.population)
+      );
     case "zeroToHk":
       return planets.filter((planet) => parseInt(planet.population) < 100000);
     case "hkToHundredM":
@@ -55,15 +50,16 @@ const sortData = (planets) => {
         return population >= 100000 && population < 100000000;
       });
     case "moreHundredM":
-      return planets.filter((planet) => parseInt(planet.population) > 100000000);
+      return planets.filter(
+        (planet) => parseInt(planet.population) > 100000000
+      );
     default:
       return planets;
   }
 };
 
-
 const filterData = (planets) => {
-  return planets.filter((planet) => planet.name.toLowerCase().includes(infoSearch));
+  return planets.filter((planet) =>
+    planet.name.toLowerCase().includes(infoSearch)
+  );
 };
-
-
