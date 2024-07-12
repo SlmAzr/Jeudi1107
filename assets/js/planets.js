@@ -4,13 +4,27 @@ const count = document.querySelector(".count");
 
 let infoSearch = "";
 
+
+const getPlanets = async () => {
+  let url = apiUrl + "planets/";
+  let results = []
+  while (url) {
+    const data = await fetchData(url);
+    results.push(...data.results);
+    url = data.next;
+  }
+   return results
+}
+const dataFetched = getPlanets();  
+
+
+
 inputSearch.addEventListener("keyup", (e) => {
   infoSearch = e.target.value.toLowerCase();
   displayingSearch();
 });
 
 
-const dataFetched = getPlanets();
 
 const displayInfo = (element) => {
   if (element) {

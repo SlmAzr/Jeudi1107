@@ -4,12 +4,24 @@ const count = document.querySelector(".count");
 
 let infoSearch = "";
 
+const getVehicles = async () => {
+    let url = apiUrl + "vehicles/";
+    let results = []
+    while (url) {
+      const data = await fetchData(url);
+      results.push(...data.results);
+      url = data.next;
+    }
+     return results
+  }
+  const dataFetched = getVehicles();  
+
 inputSearch.addEventListener("keyup", (e) => {
   infoSearch = e.target.value.toLowerCase();
   displayingSearch();
 });
 
-const dataFetched = getVehicles();
+
 
 
 const displayInfo = (element) => {

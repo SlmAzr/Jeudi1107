@@ -4,30 +4,36 @@ const count = document.querySelector(".count");
 
 let infoSearch = "";
 
+const getPeople = async () => {
+ 
+  let url = apiUrl + "people/";
+  let hehe = []
+  while (url) {
+    const data = await fetchData(url);
+    hehe.push(...data.results);
+    url = data.next;
+  }
+   return hehe
+}
+const dataFetched = getPeople();  
+
+
 inputSearch.addEventListener("keyup", (e) => {
   infoSearch = e.target.value.toLowerCase();
   displayingSearch()
 });
 
-const getPeople = async () => {
-  const response = await fetch("https://swapi.dev/api/people");
-  const data = await response.json();
-  console.log(data);
-  return data.results;
-};
 
-
-const dataFetched = getPeople();  
 
 const displayInfo = (element) => {
   if (element) {
     document.querySelector(".global-info").style.display = "block";
     document.querySelector(".no-global").style.display = "none";
-    document.getElementById("length").textContent = element.length;
-    document.getElementById("crew").textContent = element.crew;
-    document.getElementById("speed").textContent = element.max_atmosphering_speed;
-    document.getElementById("consumables").textContent = element.consumables;
-    document.getElementById("population").textContent = element.passengers;
+    document.getElementById("length").textContent = element.height + "cm";
+    document.getElementById("eyeColor").textContent = element.eye_color;
+    document.getElementById("genre").textContent = element.gender;
+    document.getElementById("birth").textContent = element.birth_year;
+    // document.getElementById("population").textContent = element.passengers;
     document.getElementById("global-name").textContent = element.name;
   }
 };
